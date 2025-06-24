@@ -48,6 +48,14 @@ app.post('/api/redeem', (req, res) => {
   res.json({ success: true, message: 'Redeem successful' });
 });
 
+ // To allow requests from your Netlify domain:
+const corsOptions = {
+  origin: ['https://watchxearn.netlify.app', 'http://localhost:3000'],
+  methods: ['GET', 'POST'],
+  credentials: true
+};
+app.use(cors(corsOptions));
+
 // Start server
 app.listen(port, '0.0.0.0', () => {
   console.log(`Server running on port ${port}`);
